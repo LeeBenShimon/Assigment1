@@ -20,3 +20,14 @@ GET http://localhost:3000/posts/6750a9e5a72100fd3a9796a0
 ###
 
 GET http://localhost:3000/posts?owner=Lee
+
+###
+
+PUT http://localhost:3000/posts/6756e553904267c846ed76be 
+Content-Type: application/json
+
+{
+"owner": "Lee", 
+"title": "updated Post", 
+"content": "Updated"
+}
