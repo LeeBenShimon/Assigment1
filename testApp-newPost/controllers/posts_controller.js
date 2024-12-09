@@ -9,6 +9,16 @@ const createPost = async (req, res) => {
   }
 };
 
+const getAllPosts = async (req, res) => {
+  try{
+    const posts = await postModel.find({});
+    res.status(200).send(posts);
+  }catch(error){
+    res.status(404).send(error);  
+  }
+};
+
 module.exports = {
-  createPost
+  createPost,
+  getAllPosts
 };
