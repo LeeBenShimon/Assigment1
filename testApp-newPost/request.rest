@@ -13,3 +13,7 @@ Content-Type: application/json
 
 GET http://localhost:3000/posts
 
+###
+
+GET http://localhost:3000/posts/6750a9e5a72100fd3a9796a0
+
