@@ -1,4 +1,4 @@
-###
+### Create a post
 
 POST http://localhost:3000/posts
 Content-Type: application/json
@@ -9,19 +9,19 @@ Content-Type: application/json
     "content": "This is my first post!"
 }
 
-###
+### Get all posts
 
 GET http://localhost:3000/posts
 
-###
+### Get a post by ID
 
-GET http://localhost:3000/posts/6750a9e5a72100fd3a9796a0
+GET http://localhost:3000/posts/6757196fe022c25f3ab887fa
 
-###
+### Get posts by owner
 
 GET http://localhost:3000/posts?owner=Lee
 
-###
+### Update a post
 
 PUT http://localhost:3000/posts/6756e553904267c846ed76be 
 Content-Type: application/json
@@ -31,3 +31,26 @@ Content-Type: application/json
 "title": "updated Post", 
 "content": "Updated"
 }
+
+### Create a Comment
+
+POST http://localhost:3000/comments
+Content-Type: application/json
+
+{
+  "postId": "6757196fe022c25f3ab887fa", 
+  "content": "This is a test comment",
+  "author": "Test"
+}
+
+### Get Comments
+
+GET  http://localhost:3000/comments
+
+### Get Comments ById
+
+GET  http://localhost:3000/comments/6757196fe022c25f3ab887fa
+
+### Get Comments ByPostId
+
+GET  http://localhost:3000/comments?postId=6757196fe022c25f3ab887fa
