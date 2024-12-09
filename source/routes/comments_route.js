@@ -11,4 +11,8 @@ router.get("/:id", commentsController.getCommentsById); //read
 
 router.get("/", commentsController.getCommentsByPostId); //read
 
+router.delete("/:id",commentsController.deleteCommentsById); //delete
+
+router.put("/:id",commentsController.updateCommentsById); // update
+
 module.exports=router;

@@ -15,7 +15,7 @@ GET http://localhost:3000/posts
 
 ### Get a post by ID
 
-GET http://localhost:3000/posts/6757196fe022c25f3ab887fa
+GET http://localhost:3000/posts/6757261e8985377ce119acb6
 
 ### Get posts by owner
 
@@ -23,7 +23,7 @@ GET http://localhost:3000/posts?owner=Lee
 
 ### Update a post
 
-PUT http://localhost:3000/posts/6756e553904267c846ed76be 
+PUT http://localhost:3000/posts/6757261e8985377ce119acb6 
 Content-Type: application/json
 
 {
@@ -54,3 +54,16 @@ GET  http://localhost:3000/comments/6757196fe022c25f3ab887fa
 ### Get Comments ByPostId
 
 GET  http://localhost:3000/comments?postId=6757196fe022c25f3ab887fa
+
+### delete Comments ById 
+DELETE http://localhost:3000/comments/675724891d5da2ddb4eabd51
+
+### update Comments ById 
+PUT http://localhost:3000/comments/675724891d5da2ddb4eabd51 
+Content-Type: application/json
+
+{
+"postId": "675724891d5da2ddb4eabd51",
+"content": "This is a test comment!!!!",
+"author": "Test"
+}

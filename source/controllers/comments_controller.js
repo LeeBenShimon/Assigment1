@@ -54,9 +54,38 @@ const getCommentsByPostId = async(req,res) => {
     }
 };
 
+const deleteCommentsById = async(req,res) => {
+    const ID =req.params.id;
+    try{
+        const delteComment=await Comment.findByIdAndDelete(ID);
+        res.status(200).send(delteComment);
+    }catch(err){
+        res.status(400).send(err);
+    }
+};
+
+
+const updateCommentsById = async(req,res) => {
+    const ID=req.params.id;
+    const comment=req.body;
+    try{
+        const update=await Comment.findByIdAndUpdate(ID,comment,{new:true,runValidators: true});
+        res.status(200).send(update);
+    if (!update) {
+        return res.status(404).send({ message: "Post not found" });
+      }
+    }
+    catch(err){
+        res.status(400).send(err);
+    }
+};
+
+
 module.exports={
     createComments,
     getComments,
     getCommentsById,
     getCommentsByPostId,
+    deleteCommentsById,
+    updateCommentsById
     };
