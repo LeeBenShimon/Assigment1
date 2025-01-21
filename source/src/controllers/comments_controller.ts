@@ -1,6 +1,7 @@
-const Comment= require("../models/comments_model");
+import Comment from "../models/comments_model";
+import { Request, Response } from "express";
 
-const createComments = async(req,res) => {
+const createComments = async(req:Request, res:Response) => {
     try{
         const format =req.body;
         const comment= new Comment(format);
@@ -12,7 +13,7 @@ const createComments = async(req,res) => {
 };
 
 
-const getComments = async(req,res) => {
+const getComments = async(req:Request, res:Response) => {
     const authorFilter = req.query.author;
     try{
         if(authorFilter){
@@ -27,7 +28,7 @@ const getComments = async(req,res) => {
     }
 };
 
-const getCommentsById = async(req,res) => {
+const getCommentsById = async(req:Request, res:Response) => {
     const IdFilter = req.params.id;
     try{
         if(IdFilter){
@@ -41,7 +42,7 @@ const getCommentsById = async(req,res) => {
 };
 
 
-const getCommentsByPostId = async(req,res) => {
+const getCommentsByPostId = async(req:Request, res:Response) => {
     const PostIdFilter = req.query.postId;
     try{
         if(PostIdFilter){
@@ -54,7 +55,7 @@ const getCommentsByPostId = async(req,res) => {
     }
 };
 
-const deleteCommentsById = async(req,res) => {
+const deleteCommentsById = async(req:Request, res:Response) => {
     const ID =req.params.id;
     try{
         const delteComment=await Comment.findByIdAndDelete(ID);
@@ -65,7 +66,7 @@ const deleteCommentsById = async(req,res) => {
 };
 
 
-const updateCommentsById = async(req,res) => {
+const updateCommentsById = async(req:Request, res:Response) => {
     const ID=req.params.id;
     const comment=req.body;
     try{
@@ -80,12 +81,11 @@ const updateCommentsById = async(req,res) => {
     }
 };
 
-
-module.exports={
+export default {
     createComments,
     getComments,
     getCommentsById,
     getCommentsByPostId,
     deleteCommentsById,
     updateCommentsById
-    };
+};

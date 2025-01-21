@@ -1,5 +1,8 @@
-const postModel = require("../models/posts_model");
-const createPost = async (req, res) => {
+
+import postModel from "../models/posts_model";
+import { Request, Response } from "express";
+
+const createPost = async (req:Request, res:Response) => {
   const post = req.body;
   try{
     const newPost = await postModel.create(post);
@@ -9,27 +12,31 @@ const createPost = async (req, res) => {
   }
 };
 
-const getAllPosts = async (req, res) => {
+const getAllPosts = async (req:Request, res:Response) => {
   try{
     const posts = await postModel.find({});
     res.status(200).send(posts);
   }catch(error){
-    res.status(404).send(error);  
+    res.status(400).send(error);  
   }
 };
 
-const getPostById = async (req, res) => {
+const getPostById = async (req:Request, res:Response) => {
   const id = req.params.id;
   try{
     const post = await postModel.findById(id);
-    res.status(200).send(post);
+    if(post === null){
+      return res.status(404).send({message: "Post not found"});
+    } else {
+      return res.status(200).send(post);
+    }
   }
   catch(error){
     res.status(400).send(error);
   }
 };
 
-const updatePost = async (req, res) => {
+const updatePost = async (req:Request, res:Response) => {
   const id = req.params.id;
   const postData = req.body;
 
@@ -44,7 +51,7 @@ const updatePost = async (req, res) => {
   }
 };
 
-module.exports = {
+export default {
   createPost,
   getAllPosts,
   getPostById,
