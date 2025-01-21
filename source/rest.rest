@@ -15,15 +15,14 @@ GET http://localhost:3000/posts
 
 ### Get a post by ID
 
-GET http://localhost:3000/posts/6757261e8985377ce119acb6
+GET http://localhost:3000/posts/678ec3abcfd2d7a57b068ad0
 
 ### Get posts by owner
 
 GET http://localhost:3000/posts?owner=Lee
 
 ### Update a post
-
-PUT http://localhost:3000/posts/6757261e8985377ce119acb6 
+PUT http://localhost:3000/posts/678ec3abcfd2d7a57b068ad0 
 Content-Type: application/json
 
 {
