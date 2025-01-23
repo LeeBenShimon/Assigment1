@@ -6,9 +6,10 @@ const app = express();
 import dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
-import postsRoutes from "./routes/posts_route";
+import postsRoutes from "./routes/posts_routes";
 import bodyParser from "body-parser";
-import comments from "./routes/comments_route";
+import commentsRoutes from "./routes/comments_routes";
+import authRoutes from "./routes/auth_routes";
 
 function initApp() {
     return new Promise<Express>((resolve, reject) => {
@@ -25,10 +26,10 @@ function initApp() {
                 
                 app.use(bodyParser.json());
                 app.use(bodyParser.urlencoded({ extended: true }));
-
                 app.use("/posts", postsRoutes);
+                app.use("/comments", commentsRoutes);
+                app.use("/auth", authRoutes);
 
-                app.use("/comments", comments);
                 resolve(app);
             });
         }
