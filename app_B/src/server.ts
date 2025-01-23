@@ -1,5 +1,5 @@
-// Lee-Ben-Shimon-322978909
 // Linoy-Eligulashvili-213655590
+// Lee-Ben-Shimon-322978909
 
 import express, { Express } from "express";
 const app = express();
@@ -10,6 +10,23 @@ import postsRoutes from "./routes/posts_routes";
 import bodyParser from "body-parser";
 import commentsRoutes from "./routes/comments_routes";
 import authRoutes from "./routes/auth_routes";
+import swaggerJsDoc from 'swagger-jsdoc';
+import swaggerUI from 'swagger-ui-express';
+
+const options = {
+    definition: {
+        openapi: "3.0.0",
+        info: {
+            title: "Web Dev 2025 REST API",
+            version: "1.0.0",
+            description: "REST server including authentication using JWT",
+        },
+        servers: [{ url: "http://localhost:3000", },],
+    },
+    apis: ["./src/routes/*.ts"],
+};
+const specs = swaggerJsDoc(options);
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 function initApp() {
     return new Promise<Express>((resolve, reject) => {
